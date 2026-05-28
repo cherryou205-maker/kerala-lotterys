@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala Government Lottery – Official</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#FFD700;--gold2:#FFA500;--deep:#0a0a1a;--card:#111827;
+  --red:#e53935;--green:#00c853;--white:#ffffff;--muted:rgba(255,255,255,0.65);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Rajdhani','Segoe UI',sans-serif;
+  background:radial-gradient(ellipse at 20% 30%,#1a1040 0%,#0a0a1a 60%);
+  color:var(--white);min-height:100vh;overflow-x:hidden;
+}
+.page{
+  position:relative;z-index:1;max-width:480px;
+  margin:0 auto;padding:0 14px 80px;
+}
+/* HEADER */
+.header{text-align:center;padding:24px 0 12px}
+.emblem{font-size:48px;display:inline-block;animation:spin3d 8s linear infinite}
+@keyframes spin3d{
+  0%{transform:rotateY(0deg) scale(1)}25%{transform:rotateY(90deg) scale(1.12)}
+  50%{transform:rotateY(180deg) scale(1)}75%{transform:rotateY(270deg) scale(0.88)}
+  100%{transform:rotateY(360deg) scale(1)}
+}
+.brand{
+  font-size:18px;font-weight:900;letter-spacing:2px;
+  background:linear-gradient(135deg,#FFD700 0%,#FFF0A0 40%,#FFD700 60%,#FFA500 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin:10px 0 4px;background-size:200% auto;animation:shimmer 3s ease infinite;
+}
+@keyframes shimmer{0%{background-position:0% center}50%{background-position:100% center}100%{background-position:0% center}}
+.subtitle-bar{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(90deg,var(--red),#c62828);
+  color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;
+  padding:4px 16px;border-radius:20px;margin:4px 0 8px;text-transform:uppercase;
+  animation:pulse-badge 2s ease infinite;
+}
+@keyframes pulse-badge{
+  0%,100%{box-shadow:0 0 0 0 rgba(229,57,53,0.5)}50%{box-shadow:0 0 0 8px rgba(229,57,53,0)}
+}
+/* JACKPOT */
+.jackpot-card{
+  background:linear-gradient(135deg,#1a0a00 0%,#2d1500 50%,#1a0a00 100%);
+  border:2px solid var(--gold);border-radius:20px;padding:18px;
+  text-align:center;margin:14px 0;
+  box-shadow:0 0 40px rgba(255,215,0,0.2),inset 0 0 60px rgba(255,165,0,0.05);
+}
+.prize-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);font-weight:600}
+.prize-amount{
+  font-size:40px;font-weight:900;
+  background:linear-gradient(180deg,#FFE55C 0%,#FFD700 40%,#FFA500 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1.1;margin:4px 0;animation:numberPulse 2s ease infinite;
+}
+@keyframes numberPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+.prize-sub{font-size:12px;color:var(--muted);margin-bottom:10px}
+.mini-prizes{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:8px}
+.mini-prize{
+  background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.3);
+  border-radius:10px;padding:5px 10px;font-size:11px;color:var(--gold);font-weight:600;
+}
+.mini-prize span{display:block;font-size:9px;color:var(--muted);font-weight:400}
+/* TIMER */
+.timer-section{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;padding:12px 18px;margin:10px 0;
+}
+.timer-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--red);font-weight:700;margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+.timer-label::before{content:'🔴';font-size:9px;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.timer-boxes{display:flex;gap:8px;justify-content:center}
+.tbox{
+  flex:1;background:linear-gradient(180deg,#1e1e3a,#0d0d1a);
+  border:1px solid rgba(255,215,0,0.3);border-radius:12px;padding:10px 4px;text-align:center;
+}
+.tbox .num{font-size:26px;font-weight:900;color:var(--gold);line-height:1;display:block}
+.tbox .unit{font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:4px;display:block}
+.tcolon{font-size:22px;color:var(--gold);align-self:center;opacity:0.6;animation:blink 1s step-end infinite}
+/* SECTION TITLE */
+.section-title{
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,215,0,0.4),transparent)}
+.ticket-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(0,200,83,0.08);border:1px solid rgba(0,200,83,0.25);
+  border-radius:10px;padding:7px 12px;font-size:13px;color:#69f0ae;margin-bottom:8px;
+}
+/* SEARCH */
+.search-box{
+  width:100%;background:rgba(255,255,255,0.07);border:2px solid rgba(255,215,0,0.3);
+  border-radius:12px;padding:10px 14px;font-size:14px;
+  font-family:inherit;color:var(--white);outline:none;
+  transition:border-color 0.3s;margin-bottom:8px;
+}
+.search-box::placeholder{color:rgba(255,255,255,0.35)}
+.search-box:focus{border-color:var(--gold);box-shadow:0 0 16px rgba(255,215,0,0.15)}
+.ticket-count-badge{
+  background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);
+  border-radius:8px;padding:5px 10px;font-size:12px;color:var(--gold);margin-bottom:8px;
+  display:flex;justify-content:space-between;
+}
+/* GRID */
+.ticket-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+  margin-bottom:10px;max-height:360px;overflow-y:auto;padding-right:2px;
+}
+.ticket-grid::-webkit-scrollbar{width:3px}
+.ticket-grid::-webkit-scrollbar-track{background:rgba(255,255,255,0.04);border-radius:4px}
+.ticket-grid::-webkit-scrollbar-thumb{background:rgba(255,215,0,0.3);border-radius:4px}
+/* TICKET */
+.ticket{
+  border-radius:10px;border:1.5px solid rgba(255,215,0,0.2);
+  background:linear-gradient(135deg,#1a1a2e,#16213e);
+  cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:8px 4px;font-size:10px;font-weight:700;
+  color:var(--muted);transition:all 0.18s;
+  user-select:none;position:relative;gap:2px;
+}
+.ticket .t-icon{font-size:13px;line-height:1}
+.ticket .t-num{font-size:10px;font-weight:700;letter-spacing:0.3px}
+.ticket:hover{border-color:rgba(255,215,0,0.7);transform:scale(1.05);color:var(--white)}
+.ticket.hidden{display:none}
+.ticket.selected{
+  border-color:var(--gold);background:linear-gradient(135deg,#3d2700,#1a1000);
+  color:var(--gold);transform:scale(1.04);box-shadow:0 0 10px rgba(255,215,0,0.35);
+}
+.ticket.selected::after{
+  content:'✓';position:absolute;top:2px;right:5px;
+  font-size:9px;color:var(--green);font-weight:900;
+}
+/* CHIPS */
+.selected-chips{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 8px}
+.chip{
+  background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.35);
+  border-radius:8px;padding:3px 8px;font-size:11px;color:var(--gold);
+  font-weight:700;display:flex;align-items:center;gap:4px;
+}
+.chip-x{cursor:pointer;color:var(--red);font-size:13px;line-height:1}
+/* WARNING */
+.min-warning{
+  text-align:center;font-size:12px;color:var(--red);font-weight:600;
+  margin:6px 0;padding:8px;border-radius:10px;
+  border:1px dashed rgba(229,57,53,0.4);background:rgba(229,57,53,0.06);display:none;
+}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+/* SUMMARY */
+.summary-box{
+  background:linear-gradient(135deg,rgba(255,215,0,0.06),rgba(255,165,0,0.03));
+  border:1px solid rgba(255,215,0,0.25);border-radius:14px;
+  padding:12px 16px;margin:10px 0;
+}
+.summary-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:5px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.summary-row:last-child{border-bottom:none}
+.summary-row .label{color:var(--muted)}
+.summary-row .value{font-weight:700;color:var(--white)}
+.summary-row.total .label{color:var(--gold);font-weight:700;font-size:14px}
+.summary-row.total .value{color:var(--gold);font-size:18px;font-weight:900}
+/* WHATSAPP BTN */
+.btn-whatsapp{
+  width:100%;padding:16px;border-radius:16px;border:none;
+  background:linear-gradient(135deg,#128C7E 0%,#25D366 50%,#128C7E 100%);
+  background-size:200% auto;color:white;font-family:inherit;
+  font-size:17px;font-weight:700;letter-spacing:1px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all 0.3s;box-shadow:0 8px 28px rgba(37,211,102,0.3);
+  animation:pulse-green 2.5s ease infinite;position:relative;overflow:hidden;
+}
+@keyframes pulse-green{
+  0%,100%{box-shadow:0 8px 28px rgba(37,211,102,0.3)}50%{box-shadow:0 8px 44px rgba(37,211,102,0.55)}
+}
+.btn-whatsapp:active{transform:scale(0.98)}
+/* TRUST */
+.trust-strip{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:12px 0;flex-wrap:wrap;
+}
+.trust-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-weight:600}
+.divider{height:1px;background:rgba(255,255,255,0.07);margin:8px 0}
+.payment-section{text-align:center;margin:10px 0}
+.payment-label{font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
+.payment-icons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.pay-chip{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px;padding:7px 14px;font-size:13px;font-weight:700;color:var(--white);
+}
+.notice{
+  background:rgba(255,165,0,0.07);border-left:3px solid var(--gold2);
+  border-radius:0 10px 10px 0;padding:10px 12px;font-size:12px;
+  color:rgba(255,200,100,0.85);line-height:1.5;margin:10px 0;
+}
+.footer{
+  text-align:center;font-size:10px;color:rgba(255,255,255,0.22);
+  margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);
+}
+/* FLOATING WHATSAPP */
+.wa-float{
+  position:fixed;bottom:22px;right:18px;z-index:9999;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#128C7E,#25D366);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.55);
+  cursor:pointer;border:none;
+  animation:wa-pulse 2s ease infinite;
+  text-decoration:none;
+}
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.55),0 0 0 0 rgba(37,211,102,0.4)}
+  50%{box-shadow:0 4px 28px rgba(37,211,102,0.7),0 0 0 10px rgba(37,211,102,0)}
+}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-float-tip{
+  position:fixed;bottom:30px;right:84px;z-index:9998;
+  background:#25D366;color:#fff;font-size:12px;font-weight:700;
+  padding:6px 12px;border-radius:20px;white-space:nowrap;
+  pointer-events:none;opacity:0;transition:opacity 0.3s;
+  box-shadow:0 2px 10px rgba(0,0,0,0.3);
+}
+.wa-float:hover + .wa-float-tip{opacity:1}
+/* CONFETTI */
+.confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;overflow:hidden}
+.confetti-piece{position:absolute;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="confetti-container" id="confetti"></div>
+<div class="page">
+
+  <div class="header">
+    <div class="emblem">🏆</div>
+    <div class="brand">KERALA GOVERNMENT<br>LOTTERY</div>
+    <div class="subtitle-bar">🎯 Official Jackpot Draw 2026</div>
+  </div>
+
+  <div class="jackpot-card">
+    <div class="prize-label">🥇 FIRST PRIZE</div>
+    <div class="prize-amount">₹25 Crore</div>
+    <div class="prize-sub">Keralalotteries.net Official Draw</div>
+    <div class="mini-prizes">
+      <div class="mini-prize">₹5 Lakh<span>2nd Prize</span></div>
+      <div class="mini-prize">₹1 Lakh<span>3rd Prize</span></div>
+      <div class="mini-prize">₹5,000<span>Consolation</span></div>
+    </div>
+  </div>
+
+  <div class="timer-section">
+    <div class="timer-label">LIVE OFFER CLOSING IN</div>
+    <div class="timer-boxes">
+      <div class="tbox"><span class="num" id="t-h">00</span><span class="unit">HOURS</span></div>
+      <div class="tcolon">:</div>
+      <div class="tbox"><span class="num" id="t-m">14</span><span class="unit">MINS</span></div>
+      <div class="tcolon">:</div>
+      <div class="tbox"><span class="num" id="t-s">59</span><span class="unit">SECS</span></div>
+    </div>
+  </div>
+
+  <div class="tickets-section">
+    <div class="section-title">🎟️ Tickets Select Karein</div>
+    <div class="ticket-meta">
+      <span>💰 Price: <strong style="color:#fff">₹40 / ticket</strong></span>
+
+    </div>
+    <input type="text" class="search-box" id="searchBox" placeholder="🔍 Ticket search karein... (e.g. KL058)" oninput="filterTickets()" />
+    <div class="ticket-count-badge" id="countBadge">
+      <span id="badgeTotal">📋 Total: 382</span>
+      <span id="badgeSel" style="color:#69f0ae">✅ Selected: 0</span>
+    </div>
+
+    <div class="ticket-grid" id="ticketGrid">
+<div class="ticket" onclick="toggleTicket(this,'KL058198')" data-num="KL058198" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL058198</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL457432')" data-num="KL457432" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL457432</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL074526')" data-num="KL074526" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL074526</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL208982')" data-num="KL208982" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL208982</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL992875')" data-num="KL992875" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL992875</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL145584')" data-num="KL145584" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL145584</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL289040')" data-num="KL289040" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL289040</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL415540')" data-num="KL415540" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL415540</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL379713')" data-num="KL379713" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL379713</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL808624')" data-num="KL808624" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL808624</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL672490')" data-num="KL672490" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL672490</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL829629')" data-num="KL829629" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL829629</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL678491')" data-num="KL678491" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL678491</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL611324')" data-num="KL611324" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL611324</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL173795')" data-num="KL173795" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL173795</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL140845')" data-num="KL140845" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL140845</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL161986')" data-num="KL161986" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL161986</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL697871')" data-num="KL697871" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL697871</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL169021')" data-num="KL169021" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL169021</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL623875')" data-num="KL623875" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL623875</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL946454')" data-num="KL946454" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL946454</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL517803')" data-num="KL517803" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL517803</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL723948')" data-num="KL723948" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL723948</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL533445')" data-num="KL533445" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL533445</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL774894')" data-num="KL774894" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL774894</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL335231')" data-num="KL335231" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL335231</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL716666')" data-num="KL716666" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL716666</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL876489')" data-num="KL876489" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL876489</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL357894')" data-num="KL357894" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL357894</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL081341')" data-num="KL081341" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL081341</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL949742')" data-num="KL949742" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL949742</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL526945')" data-num="KL526945" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL526945</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL405006')" data-num="KL405006" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL405006</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL828512')" data-num="KL828512" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL828512</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL816289')" data-num="KL816289" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL816289</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL510435')" data-num="KL510435" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL510435</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL700045')" data-num="KL700045" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL700045</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL074556')" data-num="KL074556" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL074556</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL786965')" data-num="KL786965" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL786965</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL146075')" data-num="KL146075" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL146075</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL278882')" data-num="KL278882" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL278882</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL169394')" data-num="KL169394" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL169394</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL379099')" data-num="KL379099" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL379099</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL087497')" data-num="KL087497" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL087497</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL728417')" data-num="KL728417" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL728417</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL208596')" data-num="KL208596" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL208596</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL142304')" data-num="KL142304" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL142304</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL152056')" data-num="KL152056" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL152056</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL348301')" data-num="KL348301" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL348301</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL451054')" data-num="KL451054" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL451054</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL541586')" data-num="KL541586" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL541586</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL516418')" data-num="KL516418" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL516418</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL774678')" data-num="KL774678" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL774678</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL675216')" data-num="KL675216" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL675216</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL773482')" data-num="KL773482" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL773482</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL875215')" data-num="KL875215" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL875215</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL973486')" data-num="KL973486" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL973486</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL055725')" data-num="KL055725" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL055725</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL728021')" data-num="KL728021" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL728021</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL261082')" data-num="KL261082" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL261082</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL882873')" data-num="KL882873" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL882873</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL786664')" data-num="KL786664" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL786664</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL799385')" data-num="KL799385" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL799385</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL702562')" data-num="KL702562" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL702562</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL809917')" data-num="KL809917" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL809917</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL091308')" data-num="KL091308" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL091308</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL847799')" data-num="KL847799" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL847799</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL828590')" data-num="KL828590" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL828590</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL218925')" data-num="KL218925" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL218925</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL923356')" data-num="KL923356" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL923356</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL334455')" data-num="KL334455" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL334455</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL237084')" data-num="KL237084" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL237084</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL349493')" data-num="KL349493" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL349493</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL751730')" data-num="KL751730" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL751730</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL815149')" data-num="KL815149" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL815149</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL663220')" data-num="KL663220" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL663220</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL272119')" data-num="KL272119" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL272119</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL780484')" data-num="KL780484" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL780484</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL359495')" data-num="KL359495" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL359495</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL019425')" data-num="KL019425" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL019425</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL605301')" data-num="KL605301" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL605301</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL774676')" data-num="KL774676" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL774676</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL307495')" data-num="KL307495" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL307495</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL200620')" data-num="KL200620" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL200620</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL234874')" data-num="KL234874" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL234874</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL205622')" data-num="KL205622" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL205622</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL244732')" data-num="KL244732" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL244732</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL614738')" data-num="KL614738" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL614738</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL257036')" data-num="KL257036" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL257036</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL199929')" data-num="KL199929" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL199929</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL930402')" data-num="KL930402" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL930402</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL304493')" data-num="KL304493" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL304493</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL312264')" data-num="KL312264" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL312264</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL332181')" data-num="KL332181" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL332181</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL951585')" data-num="KL951585" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL951585</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL143259')" data-num="KL143259" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL143259</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL097795')" data-num="KL097795" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL097795</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL986704')" data-num="KL986704" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL986704</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL278891')" data-num="KL278891" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL278891</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL599633')" data-num="KL599633" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL599633</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL015374')" data-num="KL015374" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL015374</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL872485')" data-num="KL872485" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL872485</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL000373')" data-num="KL000373" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL000373</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL949954')" data-num="KL949954" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL949954</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL619046')" data-num="KL619046" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL619046</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL949951')" data-num="KL949951" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL949951</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL266984')" data-num="KL266984" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL266984</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL234871')" data-num="KL234871" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL234871</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL476506')" data-num="KL476506" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL476506</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL419381')" data-num="KL419381" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL419381</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL779895')" data-num="KL779895" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL779895</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL528812')" data-num="KL528812" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL528812</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL336582')" data-num="KL336582" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL336582</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL456512')" data-num="KL456512" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL456512</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL467215')" data-num="KL467215" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL467215</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL725925')" data-num="KL725925" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL725925</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL673209')" data-num="KL673209" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL673209</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL248985')" data-num="KL248985" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL248985</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL694204')" data-num="KL694204" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL694204</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL058162')" data-num="KL058162" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL058162</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL273912')" data-num="KL273912" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL273912</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL055063')" data-num="KL055063" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL055063</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL795629')" data-num="KL795629" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL795629</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL974628')" data-num="KL974628" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL974628</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL971470')" data-num="KL971470" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL971470</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL951580')" data-num="KL951580" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL951580</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL465215')" data-num="KL465215" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL465215</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL250828')" data-num="KL250828" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL250828</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL277772')" data-num="KL277772" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL277772</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL575792')" data-num="KL575792" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL575792</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL255551')" data-num="KL255551" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL255551</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL444561')" data-num="KL444561" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL444561</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL258096')" data-num="KL258096" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL258096</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL188881')" data-num="KL188881" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL188881</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987359')" data-num="KL987359" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987359</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL636747')" data-num="KL636747" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL636747</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL765954')" data-num="KL765954" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL765954</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL979688')" data-num="KL979688" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL979688</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL233322')" data-num="KL233322" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL233322</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL578636')" data-num="KL578636" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL578636</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL958772')" data-num="KL958772" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL958772</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL737384')" data-num="KL737384" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL737384</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL666683')" data-num="KL666683" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL666683</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL870684')" data-num="KL870684" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL870684</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL505881')" data-num="KL505881" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL505881</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL939485')" data-num="KL939485" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL939485</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL333999')" data-num="KL333999" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL333999</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL754367')" data-num="KL754367" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL754367</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL363679')" data-num="KL363679" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL363679</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL648299')" data-num="KL648299" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL648299</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL277712')" data-num="KL277712" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL277712</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL786786')" data-num="KL786786" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL786786</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL332786')" data-num="KL332786" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL332786</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL978584')" data-num="KL978584" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL978584</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL746638')" data-num="KL746638" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL746638</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL633773')" data-num="KL633773" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL633773</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL786000')" data-num="KL786000" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL786000</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL655788')" data-num="KL655788" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL655788</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL356468')" data-num="KL356468" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL356468</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL374781')" data-num="KL374781" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL374781</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL453876')" data-num="KL453876" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL453876</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL897654')" data-num="KL897654" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL897654</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL566277')" data-num="KL566277" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL566277</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL275885')" data-num="KL275885" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL275885</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL900900')" data-num="KL900900" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL900900</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL458365')" data-num="KL458365" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL458365</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL090909')" data-num="KL090909" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL090909</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL966835')" data-num="KL966835" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL966835</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL657883')" data-num="KL657883" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL657883</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL273781')" data-num="KL273781" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL273781</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL936491')" data-num="KL936491" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL936491</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL980897')" data-num="KL980897" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL980897</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL717267')" data-num="KL717267" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL717267</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL587378')" data-num="KL587378" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL587378</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL235678')" data-num="KL235678" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL235678</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL980768')" data-num="KL980768" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL980768</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL825436')" data-num="KL825436" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL825436</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL626628')" data-num="KL626628" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL626628</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL589357')" data-num="KL589357" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL589357</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL896655')" data-num="KL896655" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL896655</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL652387')" data-num="KL652387" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL652387</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL132547')" data-num="KL132547" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL132547</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL827888')" data-num="KL827888" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL827888</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL919395')" data-num="KL919395" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL919395</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL569935')" data-num="KL569935" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL569935</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL650365')" data-num="KL650365" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL650365</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL897265')" data-num="KL897265" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL897265</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL233232')" data-num="KL233232" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL233232</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL567294')" data-num="KL567294" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL567294</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL116541')" data-num="KL116541" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL116541</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987004')" data-num="KL987004" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987004</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL789243')" data-num="KL789243" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL789243</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL997645')" data-num="KL997645" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL997645</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL892781')" data-num="KL892781" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL892781</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL911991')" data-num="KL911991" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL911991</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL007001')" data-num="KL007001" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL007001</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL852375')" data-num="KL852375" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL852375</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL978891')" data-num="KL978891" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL978891</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL562653')" data-num="KL562653" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL562653</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL451231')" data-num="KL451231" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL451231</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL900800')" data-num="KL900800" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL900800</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL638332')" data-num="KL638332" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL638332</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL616785')" data-num="KL616785" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL616785</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL786858')" data-num="KL786858" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL786858</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL589986')" data-num="KL589986" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL589986</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL536731')" data-num="KL536731" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL536731</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL620128')" data-num="KL620128" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL620128</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL727782')" data-num="KL727782" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL727782</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL885588')" data-num="KL885588" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL885588</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL256783')" data-num="KL256783" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL256783</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL526579')" data-num="KL526579" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL526579</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL132543')" data-num="KL132543" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL132543</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL676757')" data-num="KL676757" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL676757</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL345112')" data-num="KL345112" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL345112</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL563338')" data-num="KL563338" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL563338</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL675532')" data-num="KL675532" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL675532</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL878976')" data-num="KL878976" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL878976</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL265354')" data-num="KL265354" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL265354</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL225443')" data-num="KL225443" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL225443</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL652211')" data-num="KL652211" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL652211</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL567822')" data-num="KL567822" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL567822</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL342576')" data-num="KL342576" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL342576</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL564682')" data-num="KL564682" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL564682</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL995533')" data-num="KL995533" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL995533</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL788988')" data-num="KL788988" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL788988</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL638941')" data-num="KL638941" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL638941</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL872731')" data-num="KL872731" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL872731</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL646889')" data-num="KL646889" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL646889</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL345543')" data-num="KL345543" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL345543</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL100010')" data-num="KL100010" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL100010</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL734617')" data-num="KL734617" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL734617</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL657783')" data-num="KL657783" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL657783</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL786555')" data-num="KL786555" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL786555</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL450092')" data-num="KL450092" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL450092</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL828192')" data-num="KL828192" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL828192</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL828399')" data-num="KL828399" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL828399</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL777786')" data-num="KL777786" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL777786</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL986876')" data-num="KL986876" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL986876</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL172839')" data-num="KL172839" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL172839</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL622381')" data-num="KL622381" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL622381</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL627373')" data-num="KL627373" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL627373</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL777555')" data-num="KL777555" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL777555</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL386386')" data-num="KL386386" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL386386</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987645')" data-num="KL987645" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987645</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL376133')" data-num="KL376133" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL376133</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL666762')" data-num="KL666762" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL666762</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL999111')" data-num="KL999111" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL999111</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL186286')" data-num="KL186286" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL186286</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL322223')" data-num="KL322223" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL322223</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL738481')" data-num="KL738481" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL738481</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL757899')" data-num="KL757899" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL757899</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL432678')" data-num="KL432678" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL432678</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL768286')" data-num="KL768286" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL768286</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL366366')" data-num="KL366366" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL366366</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL828371')" data-num="KL828371" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL828371</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL727281')" data-num="KL727281" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL727281</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL545632')" data-num="KL545632" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL545632</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL586586')" data-num="KL586586" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL586586</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL100001')" data-num="KL100001" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL100001</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987801')" data-num="KL987801" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987801</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987802')" data-num="KL987802" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987802</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987803')" data-num="KL987803" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987803</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987804')" data-num="KL987804" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987804</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987805')" data-num="KL987805" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987805</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987806')" data-num="KL987806" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987806</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987807')" data-num="KL987807" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987807</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987808')" data-num="KL987808" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987808</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987809')" data-num="KL987809" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987809</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987810')" data-num="KL987810" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987810</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987811')" data-num="KL987811" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987811</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987812')" data-num="KL987812" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987812</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987813')" data-num="KL987813" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987813</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987814')" data-num="KL987814" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987814</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987815')" data-num="KL987815" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987815</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987816')" data-num="KL987816" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987816</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987817')" data-num="KL987817" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987817</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987818')" data-num="KL987818" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987818</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987819')" data-num="KL987819" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987819</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987820')" data-num="KL987820" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987820</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987821')" data-num="KL987821" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987821</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987822')" data-num="KL987822" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987822</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987823')" data-num="KL987823" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987823</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987824')" data-num="KL987824" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987824</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987825')" data-num="KL987825" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987825</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987826')" data-num="KL987826" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987826</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987827')" data-num="KL987827" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987827</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987828')" data-num="KL987828" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987828</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987829')" data-num="KL987829" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987829</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987830')" data-num="KL987830" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987830</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987831')" data-num="KL987831" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987831</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987832')" data-num="KL987832" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987832</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987833')" data-num="KL987833" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987833</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987834')" data-num="KL987834" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987834</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987835')" data-num="KL987835" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987835</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987836')" data-num="KL987836" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987836</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987837')" data-num="KL987837" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987837</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987838')" data-num="KL987838" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987838</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987839')" data-num="KL987839" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987839</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987840')" data-num="KL987840" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987840</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987841')" data-num="KL987841" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987841</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987842')" data-num="KL987842" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987842</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987843')" data-num="KL987843" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987843</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987844')" data-num="KL987844" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987844</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987845')" data-num="KL987845" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987845</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987846')" data-num="KL987846" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987846</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987847')" data-num="KL987847" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987847</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987848')" data-num="KL987848" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987848</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987849')" data-num="KL987849" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987849</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987850')" data-num="KL987850" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987850</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987851')" data-num="KL987851" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987851</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987852')" data-num="KL987852" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987852</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987853')" data-num="KL987853" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987853</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987854')" data-num="KL987854" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987854</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987855')" data-num="KL987855" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987855</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987856')" data-num="KL987856" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987856</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987857')" data-num="KL987857" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987857</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987858')" data-num="KL987858" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987858</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987859')" data-num="KL987859" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987859</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987860')" data-num="KL987860" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987860</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987861')" data-num="KL987861" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987861</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987862')" data-num="KL987862" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987862</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987863')" data-num="KL987863" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987863</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987864')" data-num="KL987864" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987864</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987865')" data-num="KL987865" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987865</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987866')" data-num="KL987866" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987866</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987867')" data-num="KL987867" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987867</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987868')" data-num="KL987868" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987868</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987869')" data-num="KL987869" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987869</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987870')" data-num="KL987870" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987870</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987871')" data-num="KL987871" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987871</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987872')" data-num="KL987872" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987872</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987873')" data-num="KL987873" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987873</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987874')" data-num="KL987874" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987874</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987875')" data-num="KL987875" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987875</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987876')" data-num="KL987876" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987876</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987877')" data-num="KL987877" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987877</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987878')" data-num="KL987878" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987878</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987879')" data-num="KL987879" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987879</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987880')" data-num="KL987880" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987880</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987881')" data-num="KL987881" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987881</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987882')" data-num="KL987882" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987882</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987883')" data-num="KL987883" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987883</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987884')" data-num="KL987884" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987884</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987885')" data-num="KL987885" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987885</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987886')" data-num="KL987886" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987886</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987887')" data-num="KL987887" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987887</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987888')" data-num="KL987888" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987888</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987889')" data-num="KL987889" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987889</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987890')" data-num="KL987890" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987890</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987891')" data-num="KL987891" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987891</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987892')" data-num="KL987892" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987892</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987893')" data-num="KL987893" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987893</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987894')" data-num="KL987894" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987894</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987895')" data-num="KL987895" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987895</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987896')" data-num="KL987896" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987896</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987897')" data-num="KL987897" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987897</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987898')" data-num="KL987898" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987898</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987899')" data-num="KL987899" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987899</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987999')" data-num="KL987999" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987999</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987100')" data-num="KL987100" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987100</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987101')" data-num="KL987101" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987101</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987102')" data-num="KL987102" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987102</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987103')" data-num="KL987103" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987103</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987104')" data-num="KL987104" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987104</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987105')" data-num="KL987105" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987105</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987106')" data-num="KL987106" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987106</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987107')" data-num="KL987107" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987107</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987108')" data-num="KL987108" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987108</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987109')" data-num="KL987109" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987109</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987110')" data-num="KL987110" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987110</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987111')" data-num="KL987111" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987111</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987112')" data-num="KL987112" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987112</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987113')" data-num="KL987113" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987113</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987114')" data-num="KL987114" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987114</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987115')" data-num="KL987115" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987115</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987116')" data-num="KL987116" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987116</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987117')" data-num="KL987117" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987117</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987118')" data-num="KL987118" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987118</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987119')" data-num="KL987119" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987119</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987120')" data-num="KL987120" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987120</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987121')" data-num="KL987121" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987121</span></div>
+<div class="ticket" onclick="toggleTicket(this,'KL987122')" data-num="KL987122" data-vis="1"><span class="t-icon">🎟</span><span class="t-num">KL987122</span></div>
+    </div>
+
+    <div id="selectedChips" class="selected-chips"></div>
+    <div class="min-warning" id="minWarning">⚠️ Minimum 3 Tickets select karna zaroori hai!</div>
+  </div>
+
+  <div class="summary-box">
+    <div class="summary-row">
+      <span class="label">Selected Tickets</span>
+      <span class="value" id="countDisplay">0</span>
+    </div>
+    <div class="summary-row">
+      <span class="label">Price per Ticket</span>
+      <span class="value">₹40</span>
+    </div>
+    <div class="summary-row total">
+      <span class="label">💵 Total Amount</span>
+      <span class="value" id="totalDisplay">₹0</span>
+    </div>
+  </div>
+
+  <div style="margin:14px 0">
+    <button class="btn-whatsapp" onclick="submitWhatsapp()">
+      <span style="font-size:22px">📲</span>
+      WHATSAPP PAR BOOK KAREIN
+    </button>
+  </div>
+
+  <div class="trust-strip">
+    <div class="trust-badge">🔒 Secure Payment</div>
+    <div class="trust-badge">✅ Official Site</div>
+    <div class="trust-badge">⚡ Instant Confirm</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="payment-section">
+    <div class="payment-label">🔒 Secure Payment via</div>
+    <div class="payment-icons">
+      <div class="pay-chip">📱 GPay</div>
+      <div class="pay-chip">📲 PhonePe</div>
+      <div class="pay-chip">💳 Paytm</div>
+    </div>
+  </div>
+
+  <div class="notice">
+    ⚠️ <strong>Note:</strong> Sirf VIP tickets abhi available hain. Offer limited time ke liye hai.
+  </div>
+
+  <div class="footer">© 2026 Kerala State Lotteries Department · All rights reserved</div>
+</div>
+
+<!-- Floating WhatsApp Button -->
+<button class="wa-float" onclick="submitWhatsapp()" title="WhatsApp par Book Karein">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</button>
+<div class="wa-float-tip">📲 WhatsApp par Book Karein</div>
+
+<script>
+// ── State ──────────────────────────────────────────────
+var selected = {};   // num -> true
+var PRICE = 40;
+var MIN = 0;
+var WA = '919863263018';
+
+// ── Toggle ticket (called from inline onclick) ─────────
+function toggleTicket(el, num) {
+  if (selected[num]) {
+    delete selected[num];
+    el.classList.remove('selected');
+  } else {
+    selected[num] = true;
+    el.classList.add('selected');
+    spawnMini(el);
+  }
+  refreshUI();
+}
+
+// ── Filter / Search ────────────────────────────────────
+function filterTickets() {
+  var q = document.getElementById('searchBox').value.trim().toUpperCase();
+  var tickets = document.querySelectorAll('#ticketGrid .ticket');
+  var shown = 0;
+  for (var i = 0; i < tickets.length; i++) {
+    var num = tickets[i].dataset.num;
+    if (!q || num.indexOf(q) !== -1) {
+      tickets[i].classList.remove('hidden');
+      shown++;
+    } else {
+      tickets[i].classList.add('hidden');
+    }
+  }
+  document.getElementById('badgeTotal').textContent = '📋 Total: ' + shown;
+}
+
+// ── Update UI summary + chips ──────────────────────────
+function refreshUI() {
+  var keys = Object.keys(selected);
+  var count = keys.length;
+  document.getElementById('countDisplay').textContent = count;
+  document.getElementById('totalDisplay').textContent = '₹' + (count * PRICE).toLocaleString('en-IN');
+  document.getElementById('badgeSel').textContent = '✅ Selected: ' + count;
+  document.getElementById('minWarning').style.display = 'none';
+
+  var c = document.getElementById('selectedChips');
+  c.innerHTML = '';
+  for (var i = 0; i < keys.length; i++) {
+    var num = keys[i];
+    c.innerHTML += '<div class="chip">🎟 ' + num + ' <span class="chip-x" onclick="removeChip(\'' + num + '\')">✕</span></div>';
+  }
+}
+
+function removeChip(num) {
+  delete selected[num];
+  var el = document.querySelector('#ticketGrid .ticket[data-num="' + num + '"]');
+  if (el) el.classList.remove('selected');
+  refreshUI();
+}
+
+// ── Timer ──────────────────────────────────────────────
+var totalSecs = 14 * 60 + 59;
+function tick() {
+  if (totalSecs < 0) totalSecs = 14 * 60 + 59;
+  var h = Math.floor(totalSecs / 3600);
+  var m = Math.floor((totalSecs % 3600) / 60);
+  var s = totalSecs % 60;
+  document.getElementById('t-h').textContent = String(h).padStart(2, '0');
+  document.getElementById('t-m').textContent = String(m).padStart(2, '0');
+  document.getElementById('t-s').textContent = String(s).padStart(2, '0');
+  totalSecs--;
+}
+tick(); setInterval(tick, 1000);
+
+// ── WhatsApp submit ────────────────────────────────────
+function submitWhatsapp() {
+  var keys = Object.keys(selected);
+  if (keys.length < 1) {
+    var w = document.getElementById('minWarning');
+    w.style.display = 'block';
+    w.textContent = '⚠️ Kam se kam 1 ticket select karein!';
+    w.style.animation = 'none';
+    setTimeout(function() { w.style.animation = 'shake 0.4s ease'; }, 10);
+    return;
+  }
+  spawnConfetti();
+  var total = keys.length * PRICE;
+  var msg = encodeURIComponent(
+    '🏆 *KERALA GOVERNMENT LOTTERY BOOKING*\n\n' +
+    '👤 *Agent:* Nikhil Varma\n' +
+    '🎟️ *Tickets Selected (' + keys.length + '):*\n' + keys.join('\n') + '\n\n' +
+    '💵 *Total Amount: ₹' + total.toLocaleString('en-IN') + '*\n\n' +
+    '⚡ Please confirm my booking!'
+  );
+  setTimeout(function() {
+    window.open('https://wa.me/' + WA + '?text=' + msg, '_blank');
+  }, 600);
+}
+
+// ── Confetti ───────────────────────────────────────────
+function spawnConfetti() {
+  var c = document.getElementById('confetti');
+  var cols = ['#FFD700','#FFA500','#25D366','#e53935','#fff','#69f0ae'];
+  for (var i = 0; i < 70; i++) {
+    var p = document.createElement('div');
+    p.className = 'confetti-piece';
+    var col = cols[Math.floor(Math.random() * cols.length)];
+    var w = 4 + Math.random() * 7;
+    p.style.cssText = 'left:' + (Math.random()*100) + '%;background:' + col + ';width:' + w + 'px;height:' + w + 'px;border-radius:' + (Math.random()>0.5?'50%':'2px') + ';animation:fall ' + (1.5+Math.random()*2) + 's ' + (Math.random()*0.5) + 's linear forwards;';
+    c.appendChild(p);
+    setTimeout(function(pp){ pp.remove(); }, 3500, p);
+  }
+}
+
+function spawnMini(el) {
+  var rect = el.getBoundingClientRect();
+  var cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
+  var c = document.getElementById('confetti');
+  for (var i = 0; i < 8; i++) {
+    var p = document.createElement('div');
+    var angle = (i/8)*Math.PI*2, dist = 22 + Math.random()*20;
+    p.style.cssText = 'position:fixed;left:' + cx + 'px;top:' + cy + 'px;width:5px;height:5px;border-radius:50%;background:#FFD700;pointer-events:none;z-index:9999;transition:all 0.45s ease-out;opacity:1;';
+    c.appendChild(p);
+    (function(pp, a, d) {
+      setTimeout(function() {
+        pp.style.transform = 'translate(' + (Math.cos(a)*d) + 'px,' + (Math.sin(a)*d) + 'px)';
+        pp.style.opacity = '0';
+      }, 10);
+      setTimeout(function() { pp.remove(); }, 550);
+    })(p, angle, dist);
+  }
+}
+</script>
+</body>
+</html>
