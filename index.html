@@ -730,7 +730,7 @@ body{
 // ── State ──────────────────────────────────────────────
 var selected = {};   // num -> true
 var PRICE = 40;
-var MIN = 0;
+var MIN = 3;
 var WA = '917759052664';
 
 // ── Toggle ticket (called from inline onclick) ─────────
@@ -804,10 +804,10 @@ tick(); setInterval(tick, 1000);
 // ── WhatsApp submit ────────────────────────────────────
 function submitWhatsapp() {
   var keys = Object.keys(selected);
-  if (keys.length < 1) {
+  if (keys.length < 3) {
     var w = document.getElementById('minWarning');
     w.style.display = 'block';
-    w.textContent = '⚠️ Kam se kam 1 ticket select karein!';
+    w.textContent = '⚠ Minimum 3 tickets select karein!';
     w.style.animation = 'none';
     setTimeout(function() { w.style.animation = 'shake 0.4s ease'; }, 10);
     return;
